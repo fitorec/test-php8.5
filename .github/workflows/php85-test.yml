@@ -1,0 +1,57 @@
+name: Test PHP 8.5 Alpha
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test-php85:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repositorio
+      uses: actions/checkout@v3
+
+    - name: Instalar dependencias de compilación
+      run: |
+        sudo apt update
+        sudo apt install -y \
+          wget build-essential autoconf bison re2c \
+          pkg-config libxml2-dev libsqlite3-dev \
+          libssl-dev libcurl4-openssl-dev libonig-dev \
+          zlib1g-dev libzip-dev libreadline-dev
+
+    - name: Descargar y compilar PHP 8.5.0alpha1
+      run: |
+        wget https://downloads.php.net/~daniels/php-8.5.0alpha1.tar.bz2 -O php.tar.bz2
+        tar -xjf php.tar.bz2
+        cd php-8.5.0alpha1
+        ./buildconf
+        ./configure --prefix=$HOME/php85 --enable-debug --with-openssl --with-zlib --enable-mbstring
+        make -j$(nproc)
+        make install
+
+    - name: Ejecutar pruebas en ./tests/
+      run: |
+        export PATH=$HOME/php85/bin:$PATH
+
+        echo "# Pruebas php8.5" > results.md
+        echo "" >> results.md
+
+        for test in tests/*.php; do
+          echo "## $test" >> results.md
+          echo "" >> results.md
+          echo '```' >> results.md
+          php "$test" >> results.md 2>&1
+          echo '```' >> results.md
+          echo "" >> results.md
+        done
+
+    - name: Subir results.md como artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: php85-test-results
+        path: results.md
