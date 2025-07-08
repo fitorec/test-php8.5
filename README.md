@@ -58,29 +58,30 @@ docker compose run php85 php tests/<archivo>.php
 
 ## 🧪 Pruebas incluidas
 
-| Archivo                    | Característica probada                |      |
-| -------------------------- | ------------------------------------- | ---- |
-| `pipes.php`                | Pipe operator (\`                     | >\`) |
-| `match-default.php`        | Default en `match` expressions        |      |
-| `anonymous-constants.php`  | Constantes anónimas (RFC)             |      |
-| `object-callable.php`      | Nuevos tipos de `callable` en objetos |      |
-| `string-interpolation.php` | Mejoras en interpolación de strings   |      |
+| Archivo                    | Característica probada                |
+| -------------------------- | ------------------------------------- |
+| `pipes.php`                | Pipe operator (`|>`)                  |
+| `match-default.php`        | Default en `match` expressions        |
+| `anonymous-constants.php`  | Constantes anónimas (RFC)             |
+| `object-callable.php`      | Nuevos tipos de `callable` en objetos |
+| `string-interpolation.php` | Mejoras en interpolación de strings   |
+
 
 ## 🤝 Contribuciones
 
-Si deseas contribuir con más ejemplos para entender mejor las nuevas características de PHP 8.5, ¡eres bienvenido!
+Si deseas contribuir con más ejemplos para entender juntos **las nuevas características de PHP 8.5**
 
 Puedes:
 
-* Agregar archivos en la carpeta `./tests/`
-* Proponer documentación en `./docs/`
-* Enviarnos un pull request 🚀
+ - Agregar archivos en la carpeta `./tests/`
+ - Proponer documentación en `./docs/`
+ - Enviarnos un pull request 🚀
 
 ## 📚 Referencias
 
-* [PHP 8.5 alpha1 - Descarga oficial](https://downloads.php.net/~daniels/php-8.5.0alpha1.tar.bz2)
-* [RFCs activos y aprobados de PHP](https://wiki.php.net/rfc)
-* [PHP GitHub](https://github.com/php/php-src)
+ - [PHP 8.5 alpha1 - Descarga oficial](https://downloads.php.net/~daniels/php-8.5.0alpha1.tar.bz2)
+ - [RFCs activos y aprobados de PHP](https://wiki.php.net/rfc)
+ - [PHP GitHub](https://github.com/php/php-src)
 
 ---
 

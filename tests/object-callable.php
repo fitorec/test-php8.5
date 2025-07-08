@@ -1,10 +1,10 @@
 <?php
-class Greeter {
+class Saludo {
     public function __invoke($name) {
         return "Hola, $name!";
     }
 }
 
-$greeter = new Greeter();
+$saludar = new Saludo();
 
-echo $greeter("Miguel") . PHP_EOL;
+echo $saludar("Miguel") . PHP_EOL;

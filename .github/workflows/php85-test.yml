@@ -44,6 +44,10 @@ jobs:
         for test in tests/*.php; do
           echo "## $test" >> results.md
           echo "" >> results.md
+          echo '```php' >> results.md
+          cat "$test" >> results.md 2>&1
+          echo '```' >> results.md
+          echo "" >> results.md
           echo '```' >> results.md
           php "$test" >> results.md 2>&1
           echo '```' >> results.md
