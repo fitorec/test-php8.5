@@ -1,0 +1,8 @@
+services:
+  php85:
+    build: .
+    container_name: php85
+    volumes:
+      - ./tests:/app/tests
+    working_dir: /app
+    tty: true

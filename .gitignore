@@ -1,0 +1,54 @@
+# === PHP ===
+*.log
+*.cache
+*.php~
+*.swp
+*.tmp
+*.bak
+composer.lock
+vendor/
+.env
+.env.*
+
+# === Docker / build ===
+php*.tar.bz2
+php*.tar.gz
+php-src/
+*.out
+*.o
+*.so
+
+# === Sistema ===
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.sublime-*
+*.bak
+*.orig
+*.rej
+
+# === Contenedor ===
+*.pid
+*.sock
+*.pid.lock
+
+# === Logs ===
+logs/
+*.log
+
+# === Tests / coverage ===
+coverage/
+.phpunit.result.cache
+
+# === Composer ===
+composer.phar
+
+# === Archivos de sistema (Linux/macOS) ===
+*.core
+*.tgz
+*.tar
+*.gz
+
+# === Backup de editores ===
+*~
