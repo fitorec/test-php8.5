@@ -29,13 +29,13 @@ docker compose build
 ### 2. Ejecutar una prueba
 
 ```bash
-docker compose run php85 php tests/pipes.php
+docker compose run php85 php /tests/pipes.php
 ```
 
 ### 3. Ejecutar otras pruebas
 
 ```bash
-docker compose run php85 php tests/<archivo>.php
+docker compose run php85 php /tests/<archivo>.php
 ```
 
 ## 📁 Estructura del proyecto
@@ -43,6 +43,7 @@ docker compose run php85 php tests/<archivo>.php
 ```
 .
 ├── docker-compose.yml
+├── GNUmakefile
 ├── Dockerfile
 ├── tests/
 │   ├── pipes.php
@@ -65,6 +66,39 @@ docker compose run php85 php tests/<archivo>.php
 | `anonymous-constants.php`  | Constantes anónimas (RFC)             |
 | `object-callable.php`      | Nuevos tipos de `callable` en objetos |
 | `string-interpolation.php` | Mejoras en interpolación de strings   |
+
+## GNUmakefile
+
+### 🔧 `make install-laravel` (requiere permisos de superusuario)
+
+Este objetivo:
+
+- Descarga e instala Laravel 12 en la carpeta `./laravel`
+- Configura automáticamente el archivo `.env` para conexión con MySQL
+- Instala las dependencias con Composer (ignorando restricciones de versión de PHP)
+- Genera la clave de aplicación (`APP_KEY`)
+- Ejecuta las migraciones de base de datos
+- Corrige los permisos de la carpeta `./laravel`
+
+> ⚠️ Este paso requiere `sudo` porque corrige los permisos de archivos creados por Docker como `root`.
+
+Este entorno es útil para validar compatibilidad de Laravel con versiones futuras de PHP.
+
+---
+
+### 🧪 `make build`
+
+Este objetivo:
+
+- Construye el contenedor con PHP 8.5 desde el código fuente
+- No instala Laravel ni depende de MySQL
+- Permite ejecutar archivos de prueba ubicados en la carpeta `./tests`, como por ejemplo:
+
+```bash
+docker compose run --rm php85 php /tests/pipes.php
+````
+
+Ideal para quienes quieran experimentar directamente con nuevas características del lenguaje sin depender de frameworks.
 
 
 ## 🤝 Contribuciones
