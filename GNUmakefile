@@ -26,12 +26,12 @@ install-laravel:
 
 	@echo "→ Configurando .env con datos de conexión MySQL..."
 	@chmod u+w $(LARAVEL_DIR)/.env
-	@sed -i 's/^DB_CONNECTION=.*/DB_CONNECTION=mysql/' $(LARAVEL_DIR)/.env
-	@sed -i 's/^#\?DB_HOST=.*/DB_HOST=mysql/' $(LARAVEL_DIR)/.env
-	@sed -i 's/^#\?DB_PORT=.*/DB_PORT=3306/' $(LARAVEL_DIR)/.env
-	@sed -i 's/^#\?DB_DATABASE=.*/DB_DATABASE=laravel/' $(LARAVEL_DIR)/.env
-	@sed -i 's/^#\?DB_USERNAME=.*/DB_USERNAME=laravel/' $(LARAVEL_DIR)/.env
-	@sed -i 's/^#\?DB_PASSWORD=.*/DB_PASSWORD=secret/' $(LARAVEL_DIR)/.env
+	@sed -i 's/^.*DB_CONNECTION=.*/DB_CONNECTION=mysql/' $(LARAVEL_DIR)/.env
+	@sed -i 's/^.*DB_HOST=.*/DB_HOST=mysql/' $(LARAVEL_DIR)/.env
+	@sed -i 's/^.*DB_PORT=.*/DB_PORT=3306/' $(LARAVEL_DIR)/.env
+	@sed -i 's/^.*DB_DATABASE=.*/DB_DATABASE=laravel/' $(LARAVEL_DIR)/.env
+	@sed -i 's/^.*DB_USERNAME=.*/DB_USERNAME=laravel/' $(LARAVEL_DIR)/.env
+	@sed -i 's/^.*DB_PASSWORD=.*/DB_PASSWORD=secret/' $(LARAVEL_DIR)/.env
 
 
 	@echo "→ Construyendo contenedores..."
